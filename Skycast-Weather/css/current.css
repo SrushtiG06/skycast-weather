@@ -1,0 +1,110 @@
+@import url('home.css'); /* Uses theme variables from home.css */
+
+.weather-main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Search Input */
+.search-bar input {
+  padding: 0.5rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+/* Weather Card */
+.weather-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 10px 10px var(--shadow-color);
+  padding: 1rem;
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 8px;
+  color: var(--text-color);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Hover effect for card */
+.weather-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px var(--shadow-color);
+}
+
+.weather-card h3,
+.weather-card p,
+.weather-card img {
+  margin-top: 1rem;
+}
+
+.weather-card img {
+  width: 80px;
+  height: 80px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    width: 100%;
+  }
+}
+
+/* Mobile Navigation */
+#menuToggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+  }
+
+  #navLinks {
+    display: none;
+    flex-direction: column;
+    background-color: var(--header-bg);
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #navLinks.show {
+    display: flex;
+  }
+
+  #navLinks a {
+    margin: 0.5rem 0;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+}

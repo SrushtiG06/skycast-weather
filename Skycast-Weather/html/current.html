@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Weather - SkyCast</title>
+  <link rel="stylesheet" href="../css/current.css" />
+</head>
+
+<body>
+  <header>
+  <div class="logo-area">
+    <img src="../imgs/clipart1295102.png" alt="SkyCast Logo" class="logo-img" />
+    <div class="logo">SkyCast</div>
+    <button id="menuToggle" aria-label="Toggle Menu">☰</button>
+  </div>
+
+  <div class="header-buttons">
+    <button id="themeToggleBtn" aria-label="Toggle Theme">🌙</button>
+  </div>
+
+  <nav id="navLinks">
+     <a href="index.html">Home</a>
+      <a href="current.html" class="active">Current Weather</a>
+      <a href="forecast.html">5-Day Forecast</a>
+      <a href="about.html">About</a>
+      <a href="settings.html">Settings</a>
+  </nav>
+
+  
+</header>
+
+  <main class="weather-main">
+    <h2>Current Weather</h2>
+
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Enter city..." />
+      <button id="searchBtn">Get Weather</button>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <div class="weather-card">
+      <h3 id="location">Location: --</h3>
+      <img id="weatherIcon" src="../assets/icons/doodle/icons8-smiling-sun-100.png" alt="Default weather icon" />
+      <p id="description">Description: --</p>
+      <p id="temperature">Temperature: --</p>
+      <p id="humidity">Humidity: --</p>
+      <p id="wind">Wind Speed: --</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SkyCast Team</p>
+  </footer>
+
+  <script src="../js/current.js"></script>
+
+  <!-- 🔁 Unified Script Block -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Apply theme from localStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+      // Toggle theme
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+
+      // Clear input on load
+      const cityInput = document.getElementById('cityInput');
+      if (cityInput) cityInput.value = '';
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if (themeToggleBtn) {
+      themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    }
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+    }
+  });
+</script>
+
+<style>
+.logo-img {
+  height: 2.2rem;
+  width: 2.2rem;
+  object-fit: contain;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+</style>
+
+</body>
+</html>

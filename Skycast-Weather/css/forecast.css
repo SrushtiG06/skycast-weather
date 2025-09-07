@@ -1,0 +1,130 @@
+@import url('home.css'); /* Reuse theme variables */
+
+/* Main forecast container */
+.forecast-main {
+  padding: 2rem;
+  text-align: center;
+  overflow: visible !important; /* Prevent hover clipping */
+}
+
+/* City selection */
+.city-select {
+  margin-bottom: 1.5rem;
+}
+
+.city-select input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 250px;
+  border: 1px solid #ccc;
+}
+
+.city-select button {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.city-select button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Forecast grid layout */
+.forecast-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;  /* All cards in one row */
+  gap: 1.5rem;
+  margin-top: 2rem;
+  overflow-x: auto;   /* Horizontal scroll if needed */
+  overflow-y: visible !important; /* Ensure card lift is visible */
+  padding: 1rem 0;  /* Space for hover lift */
+  scroll-snap-type: x mandatory;
+}
+
+/* Individual forecast card */
+.forecast-card {
+  flex: 0 0 auto;  /* Prevent shrinking, keep fixed width */
+  width: 160px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  text-align: center;
+  scroll-snap-align: start;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 10px 10px var(--shadow-color);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.3s ease;
+}
+
+.forecast-card h3,
+.forecast-card p {
+  color: var(--text-color);
+}
+
+/* Card images */
+.forecast-card img {
+  max-width: 80px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+/* Hover effect for cards */
+.forecast-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px var(--shadow-color);
+}
+
+/* 📱 Responsive: vertical layout on small screens */
+@media (max-width: 768px) {
+  .forecast-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Desktop nav layout */
+#menuToggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile nav layout */
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+  }
+
+  #navLinks {
+    display: none;
+    flex-direction: column;
+    background-color: var(--header-bg);
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #navLinks.show {
+    display: flex;
+  }
+
+  #navLinks a {
+    margin: 0.5rem 0;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - SkyCast</title>
+  <link rel="stylesheet" href="../css/settings.css" />
+  <style>
+.logo-img {
+  height: 2.2rem;
+  width: 2.2rem;
+  object-fit: contain;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+</style>
+</head>
+
+<body>
+ <header>
+  <div class="logo-area">
+    <img src="../imgs/clipart1295102.png" alt="SkyCast Logo" class="logo-img" />
+    <div class="logo">SkyCast</div>
+    <button id="menuToggle" aria-label="Toggle Menu">☰</button>
+  </div>
+
+  <div class="header-buttons">
+    <button id="themeToggleBtn" aria-label="Toggle Theme">🌙</button>
+  </div>
+
+  <nav id="navLinks">
+     <a href="index.html">Home</a>
+      <a href="current.html" >Current Weather</a>
+      <a href="forecast.html">5-Day Forecast</a>
+      <a href="about.html">About</a>
+      <a href="settings.html"class="active">Settings</a>
+  </nav>
+
+  
+</header>
+
+
+  <main class="settings-main">
+    <h2>App Settings</h2>
+
+    <div class="setting-group">
+  <label for="themeToggle">Theme:</label>
+  <select id="themeToggle">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+
+<div class="setting-group">
+  <label for="unitToggle">Units:</label>
+  <select id="unitToggle">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+</div>
+
+
+
+    </div>
+
+    <button class="reset-btn" id="resetBtn">Reset Preferences</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SkyCast Team</p>
+  </footer>
+
+<script>
+// Ensure the script runs after the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const themeSelect = document.getElementById('themeToggle');
+  const unitSelect = document.getElementById('unitToggle');
+  const resetBtn = document.getElementById('resetBtn');
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  // Theme setup
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+  if (themeSelect) {
+    themeSelect.value = savedTheme;
+  }
+
+  // Toggle theme button
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      if (themeSelect) {
+        themeSelect.value = newTheme;
+      }
+    });
+  }
+
+  // Hamburger menu
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  // Theme dropdown change
+  if (themeSelect) {
+    themeSelect.addEventListener('change', (e) => {
+      document.documentElement.setAttribute('data-theme', e.target.value);
+      localStorage.setItem('theme', e.target.value);
+      if (themeToggleBtn) {
+        themeToggleBtn.textContent = e.target.value === 'dark' ? '☀️' : '🌙';
+      }
+    });
+  }
+
+  // Unit dropdown change
+  if (unitSelect) {
+    unitSelect.value = localStorage.getItem('unit') || 'celsius';
+    unitSelect.addEventListener('change', (e) => {
+      localStorage.setItem('unit', e.target.value);
+    });
+  }
+
+  // Reset preferences
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      localStorage.clear();
+      location.reload();
+    });
+  }
+});
+</script>
+
+</body>
+</html>

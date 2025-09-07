@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5-Day Forecast - SkyCast</title>
+  <link rel="stylesheet" href="../css/forecast.css" />
+</head>
+
+<body>
+  <header>
+  <div class="logo-area">
+    <img src="../imgs/clipart1295102.png" alt="SkyCast Logo" class="logo-img" />
+    <div class="logo">SkyCast</div>
+    <button id="menuToggle" aria-label="Toggle Menu">☰</button>
+  </div>
+
+  <div class="header-buttons">
+    <button id="themeToggleBtn" aria-label="Toggle Theme">🌙</button>
+  </div>
+
+  <nav id="navLinks">
+     <a href="index.html">Home</a>
+      <a href="current.html" >Current Weather</a>
+      <a href="forecast.html"class="active">5-Day Forecast</a>
+      <a href="about.html">About</a>
+      <a href="settings.html">Settings</a>
+  </nav>
+
+  
+</header>
+
+
+  <main class="forecast-main">
+    <h2>5-Day Weather Forecast</h2>
+
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Enter city name..." />
+      <button id="searchBtn">Get Forecast</button>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+    <div id="forecastContainer" class="forecast-grid"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SkyCast Team</p>
+  </footer>
+
+  <script src="../js/forecast.js"></script>
+  <style>
+.logo-img {
+  height: 2.2rem;
+  width: 2.2rem;
+  object-fit: contain;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,116 @@
+@import url('home.css');
+
+.settings-main {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: center;
+  color: var(--text-color);
+}
+
+.settings-main h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.setting-group {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.setting-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.setting-group select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Lift on hover/focus */
+.setting-group select:hover,
+.setting-group select:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .setting-group select {
+  background-color: #333;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+.reset-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.reset-btn:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 600px) {
+  .settings-main {
+    padding: 1rem;
+  }
+}
+
+/* Desktop nav layout */
+#menuToggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile nav layout */
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+  }
+
+  #navLinks {
+    display: none;
+    flex-direction: column;
+    background-color: var(--header-bg);
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #navLinks.show {
+    display: flex;
+  }
+
+  #navLinks a {
+    margin: 0.5rem 0;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+}
